@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h3>Search for the data</h3>
+  <input style="width:40%;margin-right: 5px;" #name placeholder="name" />
+  <button class="btn btn-primary" (click)="displayData()">Search</button>
+  <div *ngIf="flag">
+    <p>Total Count is : {{ total_count}}</p>
+    <a [routerLink]="['/followers']" [queryParams]="{ id: items }">
+      <button class="btn btn-info">Followers Bar chart</button>
+    </a>
+    <ul *ngFor="let post of items; let i = index">
+      <a [routerLink]="['/UserInfo']" [queryParams]="{ id: post.login}" *ngIf="i<10"> 
+        <!-- <div class="row" *ngIf="i<10" (click)="redirect(post.id)"> -->
+        <div class="row" >
+          <div class="col-md-5 innerDiv">
+            <li>Login : {{post.login}}</li>
+            <li>Id : {{post.id}}</li>
+            <li>Score : {{post.score}}</li>
+          </div>
+          <div class="col-md-7">
+            <li><img class="size img-thumbnail" [src]="post.avatar_url"></li>
+          </div>
+        </div>
+      </a>
+      
+    </ul>
+  </div>
+  <div>
+  </div>
+</div>
